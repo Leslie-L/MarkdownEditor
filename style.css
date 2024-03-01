@@ -1,19 +1,28 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
-  font-weight: 400;
+  font-weight: 300;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 
   --primary : rgb(45, 45, 223);
+  --navbar:#2c2d31;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+body{
+  font-size: 1.5rem;
+}
 .container{
   width: 100%;
   height: max-content;
@@ -28,7 +37,65 @@ svg{
   width: 24px;
   height: 24px;
 }
+nav{
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #2c2d31;
+}
+nav span{
+  padding-right: 10px;
+  padding-left: 10px;
+}
+.logo{
+  font-weight: 700;
+  font-size: 2rem;
+  border-right: 1px solid white;
+}
+.formName,.formName_change,.formName_change_container,.buttons_menu{
+  display: flex;
+  align-items: center;
+}
+.formName_change{
+  margin-left: 8px;
+}
+.formName_change span{
+  font-size: 1.5rem;
+}
+.formName_change input{
+  border: none;
+  font-size:1.4rem ;
+  padding-left: 10px;
+  background:var(--navbar);
+}
+.formName_change_container{
+  flex-direction: column;
+  align-items: start;
+}
+.buttons_menu{
+  margin-right: 10px;
+}
+.delete{
+  background: none;
+  border: none;
+  padding: 5px;
+  
+}
 
+.download{
+  display: flex;
+  align-items: center;
+  font-size: 1.4rem;
+  padding: 5px;
+  background-color: var(--primary);
+  border: none;
+  border-radius: 5px;
+}
+.delete:hover, .download:hover{
+  background: #747bff;
+}
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
