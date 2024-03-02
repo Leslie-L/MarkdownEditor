@@ -9,6 +9,8 @@
 
   --primary : rgb(45, 45, 223);
   --navbar:#2c2d31;
+  --code:#15161a;
+  --nameArea:#1e1f23;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -25,7 +27,7 @@ body{
 }
 .container{
   width: 100%;
-  height: max-content;
+  height: 85vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
@@ -96,6 +98,30 @@ nav span{
 .delete:hover, .download:hover{
   background: #747bff;
 }
+
+textarea{
+  padding: 10px;
+  font-size: 1.4rem;
+  background-color: var(--code);
+  border: none;
+  border-right: 2px solid white;
+}
+iframe{
+  background:var(--code);
+  border: none
+}
+.identifier{
+  height: 40px;
+  width: 100%;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.hidden{
+  display: none;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
