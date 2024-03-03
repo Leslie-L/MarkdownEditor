@@ -29,7 +29,7 @@ function drawIframe(markdown) {
   <html lang="en">
   <style>
   :root {
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Georgia', serif;
     line-height: 1.5;
     font-weight: 300;
     color-scheme: light dark;

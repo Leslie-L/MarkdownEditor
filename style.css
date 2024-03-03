@@ -47,6 +47,20 @@ nav{
   justify-content: space-between;
   background: #2c2d31;
 }
+.menu_content{
+  width: 100%;
+  max-width: 450px;
+  height: 100%px;
+  position: fixed;
+  top: 60px;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  
+  
+  background: #2c2d31;
+}
 nav span{
   padding-right: 10px;
   padding-left: 10px;
@@ -54,9 +68,9 @@ nav span{
 .logo{
   font-weight: 700;
   font-size: 2rem;
-  border-right: 1px solid white;
+  border-bottom: 1px solid white;
 }
-.formName,.formName_change,.formName_change_container,.buttons_menu{
+.formName_change,.formName_change_container{
   display: flex;
   align-items: center;
 }
@@ -77,15 +91,24 @@ nav span{
   align-items: start;
 }
 .buttons_menu{
+  margin-top: 20px;
   margin-right: 10px;
 }
 .delete{
   background: none;
   border: none;
   padding: 5px;
-  
+  display: flex;
+  align-items: center;
+  font-size: 1.4rem;
+  border-radius: 5px;
+  margin-right: 10px;
 }
+  
 
+.delete::after{
+  content: 'Delete';
+}
 .download{
   display: flex;
   align-items: center;
@@ -132,5 +155,32 @@ iframe{
   }
   button {
     background-color: #f9f9f9;
+  }
+}
+
+@media(min-width:525px){
+  .logo{
+    border-right: 1px solid white;
+  }
+  .buttons_menu{
+    margin-top: 0;
+    display: flex;
+  }
+  .menu_content{
+    width: 100%;
+    max-width: unset;
+    height: 60px;
+    position: unset;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background: #2c2d31;
+  }
+  .formName{
+    display: flex;
+    align-items: center;
+  }
+  .menu_mobile{
+      display: none;
   }
 }
