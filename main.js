@@ -1,5 +1,11 @@
 import './style.css'
 import { marked } from 'marked';
+
+const buttonMenu = document.querySelector('.menu_mobile')
+buttonMenu.addEventListener('click',()=>{
+  const contentNavbar = document.querySelector('.menu_content');
+  contentNavbar.classList.toggle('hidden')
+})
 const tokenizer = {
   codespan(src) {
       return {
