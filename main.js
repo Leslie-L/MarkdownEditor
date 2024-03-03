@@ -6,6 +6,16 @@ buttonMenu.addEventListener('click',()=>{
   const contentNavbar = document.querySelector('.menu_content');
   contentNavbar.classList.toggle('hidden')
 })
+const handleShowParts= ()=>{
+  showBnt.classList.toggle('hidden_bnt')
+  iframeArea.classList.toggle('hidden_bnt')
+}
+const showBnt = document.getElementById('show')
+const iframeArea = document.getElementById('not-show')
+const ocultBnt = document.getElementById('show-control')
+showBnt.addEventListener('click',handleShowParts)
+ocultBnt.addEventListener('click',handleShowParts)
+
 const tokenizer = {
   codespan(src) {
       return {
