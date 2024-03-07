@@ -1,5 +1,8 @@
 import './style.css'
+import { encode, decode } from 'js-base64'
 import { marked } from 'marked';
+
+let documentValue='';
 
 const buttonMenu = document.querySelector('.menu_mobile')
 buttonMenu.addEventListener('click',()=>{
@@ -31,12 +34,38 @@ marked.use({ tokenizer });
 
 const $markdown = document.getElementById('markdown');
 const $iframe = document.getElementById('result');
+const $docName = document.getElementById('docName')
+
+$docName.addEventListener('input',EdithName);
+function EdithName(e) {
+  console.log(e.target.value)
+  const [rawName, rawMark] = window.location.pathname.slice(1).split('%7C')
+  const fileName = e.target.value;
+  const hashedCode = `${encode(fileName)}|${rawMark}}`
+  window.history.replaceState(null, null, `/${hashedCode}`)
+}
+
+const [rawName, rawMark] = window.location.pathname.slice(1).split('%7C')
+const fileName = rawName ? decode(rawName) : '';
+const fileContent = rawMark ? decode(rawMark.replace(/%7D$/, '')):'';
+documentValue=fileName;
+
+$markdown.value = fileContent
+$iframe.setAttribute('srcdoc',drawIframe(fileContent))
+$docName.value=fileName;
+
 function handlerInput(e) {
-  const val = e.target.value
-  $iframe.setAttribute('srcdoc',drawIframe(val))
   
+  const inputContent = e.target.value
+  const newNameFile= $docName.value? $docName.value:'document';
+  $iframe.setAttribute('srcdoc',drawIframe(inputContent))
+  const fileName = encode(newNameFile)
+  const content  = encode(inputContent)
+  const hashedCode = `${fileName}|${content}}`
+  window.history.replaceState(null, null, `/${hashedCode}`)
 }
 $markdown.addEventListener('input',handlerInput)
+
 
 function drawIframe(markdown) {
   const text = marked.parse(markdown)
@@ -88,3 +117,14 @@ function drawIframe(markdown) {
   return content;
   
 }
+
+/*
+
+const hashedCode = `${encode(html)}|${encode(css)}|${encode(js)}`
+
+  window.history.replaceState(null, null, `/${hashedCode}`)
+  import { encode, decode } from 'js-base64'
+  const [rawHtml, rawCss, rawJs] = pathname.slice(1).split('%7C')
+
+const html = rawHtml ? decode(rawHtml) : ''
+*/
