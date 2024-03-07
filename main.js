@@ -55,8 +55,8 @@ $iframe.setAttribute('srcdoc',drawIframe(fileContent))
 $docName.value=fileName;
 
 function handlerInput(e) {
-  
-  const inputContent = e.target.value
+  documentValue=e.target.value;
+  const inputContent = e.target.value;
   const newNameFile= $docName.value? $docName.value:'document';
   $iframe.setAttribute('srcdoc',drawIframe(inputContent))
   const fileName = encode(newNameFile)
@@ -117,14 +117,28 @@ function drawIframe(markdown) {
   return content;
   
 }
+const $deleteBnt = document.querySelector('.delete');
+$deleteBnt.addEventListener('click',()=>{
+  $markdown.value=''
+  $iframe.setAttribute('srcdoc',drawIframe(''))
+  window.history.replaceState(null, null, `/`)
+})
 
-/*
-
-const hashedCode = `${encode(html)}|${encode(css)}|${encode(js)}`
-
-  window.history.replaceState(null, null, `/${hashedCode}`)
-  import { encode, decode } from 'js-base64'
-  const [rawHtml, rawCss, rawJs] = pathname.slice(1).split('%7C')
-
-const html = rawHtml ? decode(rawHtml) : ''
-*/
+const $download = document.querySelector('.download');
+$download.addEventListener('click',()=>{
+  
+  // Obtener el contenido del textarea
+  const contentMarkdown = $markdown.value;
+  // Crear un objeto Blob con el contenido Markdown
+  const blob = new Blob([contentMarkdown], { type: 'text/markdown' });
+  // Crear un enlace con el Blob
+  const downloadLink = document.createElement('a');
+  const url = URL.createObjectURL(blob);
+  downloadLink.href =url
+  const fileName = documentValue;
+  // Establecer el nombre del archivo
+  downloadLink.download = `${fileName}.md`;
+  // Simular un clic en el enlace para iniciar la descarga
+  downloadLink.click();
+  window.URL.revokeObjectURL(url);
+})
