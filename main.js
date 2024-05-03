@@ -38,7 +38,7 @@ const $docName = document.getElementById('docName')
 
 $docName.addEventListener('input',EdithName);
 function EdithName(e) {
-  console.log(e.target.value)
+  //console.log(e.target.value)
   const [rawName, rawMark] = window.location.pathname.slice(1).split('%7C')
   const fileName = e.target.value;
   const hashedCode = `${encode(fileName)}|${rawMark}}`
